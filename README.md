@@ -31,9 +31,9 @@ These barriers result in **slow digital transformation**, **limited growth**, an
 
 ---
 
-## 💡 Our Solution — SME-Connect AI
+## 💡 Our Solution — Praachurjo
 
-**Praachurjo’s “SME-Connect AI”** is a next-gen digital platform that connects and empowers SMEs through an AI-driven collaborative ecosystem.
+**Praachurjo is a next-gen digital platform that connects and empowers SMEs through an AI-driven collaborative ecosystem.
 
 ---
 
@@ -110,7 +110,7 @@ A decentralized **delivery system** connecting local riders:
 - **Chatbot Intelligence:** Fine-tuned LLM integrated via RAG pipeline
 
   <p align="center">
-  <img src="https://i.postimg.cc/8CFfx6B3/system-architecture.png" alt="System Architecture" width="800"/>
+  <img src="https://i.postimg.cc/CLNwpj0c/Whats-App-Image-2025-11-10-at-03-36-30-fbbf1d57-Recovered-1.jpg" alt="System Architecture" width="800"/>
 </p>
 
 ---
