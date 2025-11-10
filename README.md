@@ -69,7 +69,11 @@ Organizes SMEs by **product, region, and behavior** to enable:
 - Smart chatbot enables **natural-language ordering**:
   - Chat: “Order 5kg rice & 10 bottles of oil” → AI auto-fills the cart.  
   - Upload handwritten/printed shopping lists → OCR + NLP extract products.  
-  - Suggests top-rated product options instantly.  
+  - Suggests top-rated product options instantly.
+ 
+  <p align="center">
+  <img src="https://i.postimg.cc/hjr3rJjB/wmremove-transformed.webp" alt="Community Rider System" width="700"/>
+</p>
 
 ---
 
