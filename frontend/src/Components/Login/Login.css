@@ -1,0 +1,504 @@
+/* ============================================
+   ONE-VIEWPORT LOGIN PAGE - NO SCROLL DESIGN
+   ============================================ */
+
+/* CSS Variables */
+:root {
+  --login-primary: #2fa95b;
+  --login-primary-dark: #248a49;
+  --login-text: #111827;
+  --login-text-secondary: #6b7280;
+  --login-text-muted: #9ca3af;
+  --login-border: #e5e7eb;
+  --login-border-focus: #2fa95b;
+  --login-bg-input: #f9fafb;
+  --login-error: #dc2626;
+  --login-error-light: #fef2f2;
+  --login-white: #ffffff;
+  --login-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   MAIN CONTAINER - CENTERED VIEWPORT DESIGN
+   ============================================ */
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f9fafb 100%);
+  padding: 16px;
+}
+
+/* ============================================
+   LOGIN CARD - FLOATING CENTERED CARD
+   ============================================ */
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--login-white);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--login-shadow), 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+/* ============================================
+   LOGIN HEADER - COMPACT DESIGN
+   ============================================ */
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-logo-link {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.login-logo {
+  height: 32px;
+  width: auto;
+}
+
+.login-title {
+  font-size: clamp(20px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--login-text);
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  font-size: clamp(13px, 2.5vw, 14px);
+  color: var(--login-text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   LOGIN FORM - COMPACT SPACING
+   ============================================ */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--login-text);
+}
+
+.required {
+  color: var(--login-error);
+  margin-left: 2px;
+}
+
+/* Input Wrapper (for password toggle) */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Input Field */
+.input-field {
+  width: 100%;
+  height: 44px;
+  padding: 10px 14px;
+  font-size: clamp(15px, 3vw, 15px);
+  color: var(--login-text);
+  background: var(--login-bg-input);
+  border: 2px solid var(--login-border);
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.input-field::placeholder {
+  color: var(--login-text-muted);
+}
+
+.input-field:focus {
+  outline: none;
+  background: var(--login-white);
+  border-color: var(--login-border-focus);
+  box-shadow: 0 0 0 3px rgba(47, 169, 91, 0.12);
+}
+
+.input-field:hover:not(:focus) {
+  border-color: #d1d5db;
+}
+
+.input-field.error {
+  border-color: var(--login-error);
+  background: var(--login-error-light);
+}
+
+.input-field.error:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* Password field with toggle */
+.input-wrapper .input-field {
+  padding-right: 44px;
+}
+
+/* Password Toggle Button */
+.password-toggle {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--login-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.password-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--login-text);
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid var(--login-border-focus);
+  outline-offset: 2px;
+}
+
+/* Error Message */
+.error-message {
+  font-size: 13px;
+  color: var(--login-error);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* ============================================
+   FORM OPTIONS (Remember Me & Forgot Password)
+   ============================================ */
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--login-border);
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: var(--login-primary);
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid var(--login-border-focus);
+  outline-offset: 2px;
+}
+
+.checkbox-label {
+  font-size: 14px;
+  color: var(--login-text);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+.link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--login-primary);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--login-primary-dark);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--login-primary);
+  transition: width 0.2s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.forgot-link {
+  white-space: nowrap;
+}
+
+/* ============================================
+   LOGIN BUTTON - PROMINENT CTA
+   ============================================ */
+
+.btn-login {
+  width: 100%;
+  height: clamp(44px, 9vh, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  margin-top: 2px;
+  font-size: clamp(14px, 3vw, 15px);
+  font-weight: 600;
+  color: var(--login-white);
+  background: linear-gradient(135deg, var(--login-primary) 0%, #27a354 100%);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(47, 169, 91, 0.25);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--login-primary-dark) 0%, #1f7d3f 100%);
+  box-shadow: 0 4px 12px rgba(47, 169, 91, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-login:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(47, 169, 91, 0.2);
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-login:focus-visible {
+  outline: 3px solid var(--login-primary);
+  outline-offset: 2px;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--login-white);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   SIGN UP PROMPT - COMPACT FOOTER
+   ============================================ */
+
+.signup-prompt {
+  text-align: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--login-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.signup-text {
+  font-size: 14px;
+  color: var(--login-text-secondary);
+}
+
+.signup-link {
+  font-weight: 600;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .login-card {
+    padding: 40px;
+  }
+
+  .login-title {
+    font-size: 32px;
+  }
+
+  .login-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .login-left {
+    display: flex;
+  }
+
+  .login-right {
+    width: 60%;
+    padding: 48px 32px;
+  }
+
+  .login-card {
+    padding: 48px;
+  }
+
+  .login-title {
+    font-size: 36px;
+  }
+
+  .login-header {
+    margin-bottom: 40px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .login-card {
+    max-width: 480px;
+  }
+
+  .login-title {
+    font-size: 40px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .login-container {
+    min-height: auto;
+  }
+
+  .login-right {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 24px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .login-header {
+    margin-bottom: 20px;
+  }
+
+  .login-logo-link {
+    margin-bottom: 16px;
+  }
+
+  .login-form {
+    gap: 16px;
+  }
+}
+
+/* Touch Target Optimization */
+@media (max-width: 767px) {
+  .input-field {
+    height: 52px;
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .input-wrapper .input-field {
+    padding-right: 52px;
+  }
+
+  .password-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .btn-login {
+    height: 56px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .input-field,
+  .btn-login,
+  .toggle-btn {
+    border-width: 2px;
+  }
+
+  .input-field:focus,
+  .btn-login:focus-visible {
+    outline-width: 3px;
+  }
+}
