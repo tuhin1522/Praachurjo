@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Global Styles */
+body {
+  margin: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shift when scrollbar appears */
+html {
+  overflow-y: scroll;
+}

@@ -1,0 +1,17 @@
+[
+  { "id": 1, "name": "Electronics","image": "https://img.icons8.com/ios-filled/100/laptop.png" },
+  { "id": 2, "name": "Fashion","image":"https://img.icons8.com/ios-filled/100/t-shirt.png" },
+  { "id": 3, "name": "Home & Kitchen","image":"https://img.icons8.com/ios-filled/100/kitchen.png" },
+  { "id": 4, "name": "Beauty & Personal Care","image":"https://img.icons8.com/ios-filled/100/perfume.png" },
+  { "id": 5, "name": "Sports & Outdoors","image":"https://img.icons8.com/ios-filled/100/football2.png" },
+  { "id": 6, "name": "Books","image":"https://img.icons8.com/ios-filled/100/book.png" },
+  { "id": 7, "name": "Toys & Games","image":"https://img.icons8.com/ios-filled/100/puzzle.png" },
+  { "id": 8, "name": "Health & Wellness","image":"https://img.icons8.com/ios-filled/100/stethoscope.png" },
+  { "id": 9, "name": "Automotive","image":"https://img.icons8.com/ios-filled/100/car.png" },
+  { "id": 10, "name": "Jewelry & Accessories","image":"https://img.icons8.com/ios-filled/100/diamond.png" },
+  { "id": 11, "name": "Office Supplies","image":"https://img.icons8.com/ios-filled/100/pen.png" },
+  { "id": 12, "name": "Pet Supplies","image":"https://img.icons8.com/ios-filled/100/dog-paw-print.png" },
+  { "id": 13, "name": "Baby Products","image":"https://img.icons8.com/ios-filled/100/baby-bottle.png" },
+  { "id": 14, "name": "Furniture","image":"https://img.icons8.com/ios-filled/100/sofa.png" },
+  { "id": 15, "name": "Groceries","image":"https://img.icons8.com/ios-filled/100/shopping-bag.png" }
+]
