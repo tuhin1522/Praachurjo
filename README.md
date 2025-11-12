@@ -94,8 +94,8 @@ A decentralized **delivery system** connecting local riders:
 | Component | Technology |
 |------------|-------------|
 | **Frontend** | React.js + Tailwind CSS |
-| **Backend** | FastAPI (Python) |
-| **Database** | MongoDB |
+| **Backend** | FastAPI (Python) + Node.js + Express.js| 
+| **Database** | MySQL |
 | **AI/ML Models** | LSTM, HDBSCAN, XGBoost, GNNs, Autoencoders |
 | **Integrations** | Firebase Auth, Payment APIs |
 | **Deployment** | AWS / Google Cloud / Vercel |
@@ -131,7 +131,7 @@ Follow these steps to run **Praachurjo** locally.
 
 ```bash
 # Clone the repository
-git clone https://github.com/sf61561/Praachurjo.git
+git clone https://github.com/tuhin1522/Praachurjo.git
 
 # Navigate to frontend
 cd Praachurjo/frontend

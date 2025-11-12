@@ -227,7 +227,7 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ email, password, role }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -238,13 +238,46 @@ const Login = () => {
         
         // Navigate based on role
         setTimeout(() => {
-          if (role === "admin") {
-            navigate("/admin");
-          } else if (role === "seller") {
-            navigate("/seller/dashboard");
-          } else {
             navigate("/");
-          }
+        }, 1000);
+      }
+    } catch {
+      toast.error("Connection error. Please try again.", { position: "top-center" });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit1 = async (e) => {
+    e.preventDefault();
+    console.log("Seller login not implemented yet.");
+  }
+
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      toast.error("Please fill in all fields", { position: "top-center" });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (data.error) {
+        toast.error(data.error, { position: "top-center" });
+      } else {
+        toast.success("Login successful!", { position: "top-center" });
+        
+        // Navigate based on role
+        setTimeout(() => {
+            navigate(`/${data.user}`);
         }, 1000);
       }
     } catch {
@@ -322,7 +355,7 @@ const Login = () => {
         </motion.div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={(e) => { role=="customer" ? handleSubmit(e) : role=="seller" ? handleSubmit1(e) : handleSubmit2(e) }} className="space-y-5">
           {/* Role Selection */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
