@@ -64,6 +64,13 @@ Organizes SMEs by **product, region, and behavior** to enable:
 
 ---
 
+#### ✨ Sentiment Analysis for Reviews
+
+Analyze customer review text (positive/negative) using a Python FastAPI microservice backed by your trained TF‑IDF + Naive Bayes model, and store the sentiment with each review.
+
+
+<img src="https://i.postimg.cc/0y6jkd2j/Screenshot-from-2025-11-14-01-23-19.png" alt="Review Sentiment Analysis" width="700"/>
+
 
 #### 🤖 AI Business Assistant
 - Smart chatbot enables **natural-language ordering**:
@@ -72,7 +79,7 @@ Organizes SMEs by **product, region, and behavior** to enable:
   - Suggests top-rated product options instantly.
  
   <p align="center">
-  <img src="https://i.postimg.cc/hjr3rJjB/wmremove-transformed.webp" alt="Community Rider System" width="700"/>
+  <img src="https://i.postimg.cc/hjr3rJjB/wmremove-transformed.webp" alt="Community Rider System" width="500"/>
 </p>
 
 ---
