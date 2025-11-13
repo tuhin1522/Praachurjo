@@ -228,16 +228,119 @@ app.get("/:user/track",(req,res) => {
     });
 })
 
-app.post("/review/:id/add", (req, res) => {
+app.post("/review/:id/add", async (req, res) => {
     const productId = parseInt(req.params.id);
-    const {  user, star, review, date } = req.body;
+    const { user, star, review, date } = req.body;
     if (!user || !star || !review || !date) {
         return res.status(400).json({ error: "User, star, review, and date are required" });
     }
-    const sql = "INSERT INTO reviews (product_id, reviewer, number_of_star, review_description, date) VALUES (?, ?, ?, ?, ?)";
-    con.query(sql, [productId, user, star, review, date], (err, result) => {
+
+    try {
+        // Call sentiment analysis API
+        const sentimentResponse = await fetch("http://localhost:8000/api/analyze-sentiment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: review })
+        });
+
+        let sentimentData = {
+            sentiment: 'positive',
+            confidence: 50.0,
+            color: '#10b981',
+            text_color: 'text-green-600'
+        };
+
+        if (sentimentResponse.ok) {
+            const sentimentResult = await sentimentResponse.json();
+            if (sentimentResult.success) {
+                sentimentData = sentimentResult.analysis;
+            }
+        } else {
+            console.warn("Sentiment analysis failed, using default positive sentiment");
+        }
+
+        // Insert review with sentiment data
+        const sql = `INSERT INTO reviews 
+                     (product_id, reviewer, number_of_star, review_description, date, 
+                      sentiment, confidence, sentiment_color, text_color) 
+                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        
+        con.query(sql, [
+            productId, 
+            user, 
+            star, 
+            review, 
+            date,
+            sentimentData.sentiment,
+            sentimentData.confidence,
+            sentimentData.color,
+            sentimentData.text_color
+        ], (err, result) => {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ 
+                message: "Review added successfully with sentiment analysis",
+                sentiment: sentimentData
+            });
+        });
+
+    } catch (error) {
+        console.error("Error in review processing:", error);
+        // Fallback: insert review without sentiment analysis
+        const sql = "INSERT INTO reviews (product_id, reviewer, number_of_star, review_description, date) VALUES (?, ?, ?, ?, ?)";
+        con.query(sql, [productId, user, star, review, date], (err, result) => {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ message: "Review added successfully (without sentiment analysis)" });
+        });
+    }
+});
+
+app.get("/reviews/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const sql = `
+        SELECT id, product_id, reviewer, review_description, 
+               number_of_star, date, sentiment, confidence, 
+               sentiment_color, text_color
+        FROM reviews 
+        WHERE product_id = ?
+        ORDER BY date DESC
+    `;
+    con.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Review added successfully" });
+        
+        if (results.length === 0) {
+            return res.json({ 
+                success: true,
+                message: "No reviews found", 
+                reviews: [],
+                stats: {
+                    total: 0,
+                    positive: 0,
+                    negative: 0,
+                    overallRating: 0,
+                    percentage: 0
+                }
+            });
+        }
+        
+        // Calculate overall statistics
+        const positive = results.filter(r => r.sentiment === 'positive').length;
+        const negative = results.filter(r => r.sentiment === 'negative').length;
+        const total = results.length;
+        const percentage = total > 0 ? (positive / total) * 100 : 0;
+        const overallRating = Math.round((percentage / 100) * 5 * 10) / 10;
+        
+        res.json({
+            success: true,
+            message: `Found ${total} reviews`,
+            reviews: results,
+            stats: {
+                total: total,
+                positive: positive,
+                negative: negative,
+                overallRating: overallRating,
+                percentage: Math.round(percentage)
+            }
+        });
     });
 });
 
