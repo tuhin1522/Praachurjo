@@ -203,10 +203,18 @@ Praachurjo/
 
 ---
 
-## 📫 Contact
-For collaboration or inquiries:  
-📧 **noornabinoor1770@gmail.com**  
-🌐 [GitHub Repository](https://github.com/tuhin1522/Praachurjo)  
+## 📫 Contributors
+
+- **Md Tuhin Molla** *(ML Engineer)*  
+  📧 mdtuhin1499@gmail.com | 🌐 [GitHub](https://github.com/tuhin1522)
+
+- **Syed Fahad Mahmud** *(Backend Developer)*  
+  📧 sf61561@gmail.com | 🌐 [GitHub](https://github.com/sf61561)
+
+- **Md. Noornabi** *(Frontend Developer)*  
+  📧 noornabinoor1770@gmail.com | 🌐 [GitHub](https://github.com/noornabi-noor)
+
+
 
 ---
 
